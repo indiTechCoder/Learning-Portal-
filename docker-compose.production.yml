@@ -1,10 +1,7 @@
-# Run docker-compose build
-# Run docker-compose up
+# Run docker-compose -f docker-compose.production.yml build
+# Run docker-compose -f docker-compose.production.yml up
 # Live long and prosper
-# docker command to Run
-#  Open another command window and navigate to this application's root folder in the command window
-#  Run `docker-compose build` to build the images
-#  Run `docker-compose up` to run the containers
+
 version: '2'
 
 services:
@@ -14,11 +11,9 @@ services:
     image: nodeapp
     build:
       context: .
-      dockerfile: ./dockerfile
-    volumes:
-      - .:/var/www/gennexthapi
+      dockerfile: .docker/node.production.dockerfile
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
     ports:
       - "3000:3000"
     networks:
