@@ -12,15 +12,27 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/static/'
     },
+    eslint: {
+        configFile: './.eslintrc'
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ],
     module: {
-        loaders: [{
-            test: /\.js$/,
-            loader: 'babel-loader',
-            include: path.join(__dirname, 'client')
-        }]
+        loaders: [
+            {
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      loader: 'react-hot!babel'
+    },
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loaders: ['babel-loader', 'eslint-loader'],
+       include: path.join(__dirname, 'client')
+    }
+        ],
+
     },
     assets: {
         publicPath: '/static/',
