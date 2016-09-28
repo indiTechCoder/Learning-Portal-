@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-
+/*eslint-disable */
 //Validate user fields like name and password
 export const VALIDATE_USER_FIELDS = 'VALIDATE_USER_FIELDS';
 export const VALIDATE_USER_FIELDS_SUCCESS = 'VALIDATE_USER_FIELDS_SUCCESS';
