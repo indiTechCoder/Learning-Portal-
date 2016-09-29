@@ -116,29 +116,29 @@
         "webpack-merge": "^0.7.3"
     },
     "scripts": {
-            "nodestart": "babel-node server.js",
-            "build": "NODE_ENV=production webpack --colors --progress",
-            "lint": "eslint --ext .js --ext .jsx ./test ./src; exit 0",
-            "start": "node server --colors",
-            "test": "npm run lint && npm run mocha && npm run karma",
-            "test:watch": "npm run mocha:watch & npm run karma:watch",
-            "mocha": "mocha --compilers js:babel-core/register test/ --recursive",
-            "mocha:watch": "npm run mocha -- --watch",
-            "karma": "NODE_ENV=production karma start karma.config.js",
-            "karma:watch": "npm run karma -- --watch"
+        "nodestart": "babel-node server.js",
+        "build": "NODE_ENV=production webpack --colors --progress",
+        "lint": "eslint --ext .js --ext .jsx ./test ./src; exit 0",
+        "start": "node server --colors",
+        "test": "npm run lint && npm run mocha && npm run karma",
+        "test:watch": "npm run mocha:watch & npm run karma:watch",
+        "mocha": "mocha --compilers js:babel-core/register test/ --recursive",
+        "mocha:watch": "npm run mocha -- --watch",
+        "karma": "NODE_ENV=production karma start karma.config.js",
+        "karma:watch": "npm run karma -- --watch"
 
-        },
-        "repository": {
-            "type": "git",
-            "url": "git+https://github.com/bginbey/webpack-hmr-express.git"
-        },
-        "author": "Beau Ginbey",
-        "license": "ISC",
-        "bugs": {
-            "url": "https://github.com/bginbey/webpack-hmr-express/issues"
-        },
-        "homepage": "https://github.com/bginbey/webpack-hmr-express#readme",
-        "pre-commit": [
-            "lint"
-        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bginbey/webpack-hmr-express.git"
+    },
+    "author": "Beau Ginbey",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/bginbey/webpack-hmr-express/issues"
+    },
+    "homepage": "https://github.com/bginbey/webpack-hmr-express#readme",
+    "pre-commit": [
+        "lint"
+    ]
 }
