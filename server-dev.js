@@ -22,6 +22,7 @@ watcher.on('ready', function() {
         });
     });
 });
+
 // constants
 const webRoot = path.join(__dirname, 'client');
 const serverHost = '0.0.0.0';
@@ -44,7 +45,34 @@ server.register(hapiPackages, (err) => {
     // Authentication Routes
 server.route(require('./routes/api'));
 // Serve Static Directory
+server.ext('onPreHandler', function(req, next) {
+    if (req.params.transId) {
+        Item.findById(req.params.transId, function(err, item) {
+            req.item = item;
+            next();
+        });
+    } else {
+        next();
+    }
+});
 
+server.ext('onPreResponse', function(request, reply) {
+    // if there's no error then just send the normal response
+    if (!request.response.isBoom) return reply.continue();
+    // get path, code, and error information from the request
+    var path = request._route.path,
+        code = request.response.output.payload.statusCode,
+        error = request.response.output.payload.message;
+    // show a custom error page based on the path
+    if (path === '/signup') {
+        return reply.view('signup-error').code(code);
+    }
+    if (path === '/login') {
+        return reply.view('login-error').code(code);
+    }
+    // show a standard error page for any other errors
+    reply.view('error').code(400); // 400 code means Bad Request
+});
 server.route([{
     method: 'GET',
     path: '/{param*}',

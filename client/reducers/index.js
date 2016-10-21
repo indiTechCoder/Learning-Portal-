@@ -7,5 +7,4 @@ const rootReducer = combineReducers({
     validateFields: ValidateUserFieldsReducer,
     form: formReducer // <-- redux-form
 });
-
 export default rootReducer;

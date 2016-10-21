@@ -11,6 +11,7 @@ const mapDispatchToProps = (dispatch) => {
   	 		return;
   	 	}
 
+
   	 //fetch user from token (if server deems it's valid token)
       dispatch(meFromToken(token))
         .then((response) => {
